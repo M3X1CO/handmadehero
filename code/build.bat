@@ -9,11 +9,11 @@ IF NOT EXIST ..\build mkdir ..\build
 pushd ..\build
 
 REM 32-bit build
-REM cl %CommonCompilerFlags% ..\handmade\code\win32_handmade.cpp /link -subsystem:windows,5.1 %CommonLinkerFlags%
+REM cl %CommonCompilerFlags% ..\handmade\code\main.cpp /link -subsystem:windows,5.1 %CommonLinkerFlags%
 
 REM 64-bit build
 del *.pdb > NUL 2> NUL
 cl %CommonCompilerFlags% ..\code\handmade.cpp -Fmhandmade.map -LD /link -incremental:no -opt:ref -PDB:handmade_%random%.pdb -EXPORT:GameGetSoundSamples -EXPORT:GameUpdateAndRender
-cl %CommonCompilerFlags% ..\code\win32_handmade.cpp -Fmwin32_handmade.map /link %CommonLinkerFlags%
+cl %CommonCompilerFlags% ..\code\main.cpp -Fmmain.map /link %CommonLinkerFlags%
 popd
 
